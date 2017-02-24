@@ -1,0 +1,608 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video{
+    font-family: 'Lato' , sans-serif !important;
+}
+
+nav{
+    background-color: #024b68 !important;
+    box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28) !important;
+    border-color:transparent !important;
+    border-radius: 0 !important;
+    color:white !important;
+}
+.navbar-brand{
+    color:#fff !important;
+}
+.navbar-default .navbar-nav>li>a{
+    color:#fff !important;
+}
+.navbar{
+    margin-bottom: 0!important;
+}
+/*!
+* Start Bootstrap - Simple Sidebar HTML Template (http://startbootstrap.com)
+* Code licensed under the Apache License v2.0.
+* For details, see http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+/* Toggle Styles */
+
+#wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    height:100%;
+    overflow:hidden;
+}
+
+#wrapper.toggled {
+    padding-left: 250px;
+}
+
+#sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    left: 250px;
+    width: 0;
+    height: 100%;
+    margin-left: -250px;
+    overflow-y: auto;
+    background: rgb(53,92,128);
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 250px;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    position: absolute;
+    padding: 15px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -250px;
+}
+
+/* Sidebar Styles */
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+    text-indent: 20px;
+    line-height: 40px;
+}
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.sidebar-nav li a:hover {
+    text-decoration: none;
+    color: #fff;
+    background: rgba(255,255,255,0.2);
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+    height: 65px;
+    font-size: 18px;
+    line-height: 60px;
+}
+
+.sidebar-nav > .sidebar-brand a {
+    color: #ffffff;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+    color: #fff;
+    background: none;
+}
+
+@media(min-width:768px) {
+    #wrapper {
+        padding-left: 250px;
+    }
+
+    #wrapper.toggled {
+        padding-left: 0;
+    }
+
+    #sidebar-wrapper {
+        width: 250px;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        width: 0;
+    }
+
+    #page-content-wrapper {
+        padding: 20px;
+        position: relative;
+    }
+
+    #wrapper.toggled #page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+    }
+}
+
+#toogle{
+    color:white !important;
+}
+.none{
+    display:none !important;
+}
+.ps-scrollbar-y-rail , .ps-scrollbar-y{
+    z-index:9999999 !important;
+    width:7px !important;
+}
+.ps-scrollbar-y{
+    width:6px !important;
+}
+.ps-container>.ps-scrollbar-y-rail {
+    background-color: #eee !important;
+    opacity: .9 !important;
+
+}
+.ps-container>.ps-scrollbar-y-rail{
+    background-color:#000 !important;
+}
+.ps-container:hover>.ps-scrollbar-y-rail:hover>.ps-scrollbar-y{
+    background-color:#fff !important;
+}
+/*dropzoje*/
+.k-dropzone{
+    background-color:rgb(53,92,128) !important;
+    border-radius:0 !important;
+    border-width:0 !important;
+    padding:0 !important;
+}
+.k-button{
+    background-color:rgb(53,92,128) !important;
+    border-radius:0 !important;
+    border-width:0 !important;
+    color:white !important;
+
+}
+k-button:focus{
+    outline:0 !important;
+}
+.k-widget{
+    border-width:0 !important;
+    text-align:left;
+}
+.k-toolbar.k-widget.k-toolbar-resizable.k-spreadsheet-toolbar{
+    background-color:rgb(53,92,128) !important;
+}
+.k-icon{
+    color:#fff !important;
+}
+.k-button .k-upload-button{
+    position: relative !important;
+    left:-32px !important;
+}
+.k-file {
+    background-color: rgb(53,92,128) !important;
+    border-color: rgb(53,92,128) !important;
+    border:0 !important;
+    padding:1px !important;
+}
+.k-upload-files k-reset , .k-upload-files{
+    border-color:rgb(53,92,128) !important;
+    background-color: rgb(53,92,128) !important;
+    border: 0 !important;
+    padding:0 !important;
+    border-color:rgb(53,92,128) !important;
+}
+.k-header{
+    background-color:rgb(53,92,128) !important;
+}
+.k-file-success .k-progress{
+    background-color:rgb(53,92,128) !important;
+    border-color:rgb(53,92,128) !important;
+}
+.k-file-name-size-wrapper{
+    color:white !important;
+}
+.k-file-name{
+    padding-bottom:20px !important;
+}
+k-button k-upload-button{
+    position: relative !important;
+    left:-32px !important;
+}
+.main_page{
+    background-color: #f8f8f8;
+}
+.right-wrapper{
+    position:fixed;
+    width:250px;
+    background-color:rgb(235 , 235 , 235);
+    height:100%;
+    left:250px;
+    top:0;
+}
+.right-wrapper-last{
+    position:fixed;
+    width:250px;
+    background-color:rgb(235 , 235 , 235);
+    height:100%;
+    right:0px;
+    top:0;
+}
+.inside-wrapper{
+    padding:5%;
+    padding-left:0 !important;
+}
+.black{
+    color:black !important;
+}
+.k-button.k-upload-button{
+    position:relative !important;
+    left:-32px !important
+}
+.sidebar-nav > .sidebar-brand a {
+    color: #000 !important;
+    text-align: left;
+    font-size: 16px;
+    text-transform: lowercase;
+}
+button
+{
+    background-color: transparent;
+    color: white;
+    box-shadow: 1px 1px 1px 1px #024b68;
+}
+button:hover , button:active , button:focus{
+    color: white !important;
+    box-shadow: 1px 1px 1px 1px #024b68;
+    transition:all 2s ease-in-out;
+}
+#select{
+    background-color: #024b68 !important;
+    color: white !important;
+    padding: 2%!important;
+    width: 90%!important;
+    margin: 0 auto!important;
+}
+
+.drag-area{
+    width: 50%;
+    height: 60px;
+    background-color: #f4f4f4;
+    margin: 0 auto
+}
+.graph-container{
+    width: 50%;
+    height: 400px;
+    background-color: #f4f4f4;
+    margin: 0 auto
+}
+.drag-text{
+    font-size: 16px;
+    color: #323232;
+    position: relative;
+    top: 19px;
+    left: 5px;
+}
+#graph:hover{
+    border:1px solid blue;
+    cursor:pointer;
+}
+.drag-ele{
+    -moz-box-shadow: 0 1px 1px rgba(0,0,0,.25);
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.25);
+    box-shadow: 0 1px 1px rgba(0,0,0,.25);
+    background-image: -moz-linear-gradient(50% 100% -180deg,#fff 0,#d3d3d3 100%);
+    background-image: -webkit-linear-gradient(-90deg,#fff 0,#d3d3d3 100%);
+    background-image: -o-linear-gradient(-180deg,#fff 0,#d3d3d3 100%);
+    background-image: -ms-linear-gradient(-180deg,#fff 0,#d3d3d3 100%);
+    background-image: linear-gradient(-180deg,#fff 0,#d3d3d3 100%);
+    width: 165px;
+    height: 38px;
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffffff,endColorstr=#ffd3d3d3,GradientType=0)";
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffffff, endColorstr=#ffd3d3d3, GradientType=0);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: 1px solid #4F4F4F;
+    display: block;
+    text-decoration: none;
+    margin:0 auto !important;
+}
+#all-drag-attribute li{
+    margin-bottom: 7% !important;
+}
+.drop-active{
+    border:4px dashed grey;
+}
+.drop-target {
+    background-color: #29e;
+    border-color: #fff;
+    border-style: solid;
+}
+.can-drop {
+    color: #000;
+    background-color: #4e4;
+}
+#all-drag-attribute{
+    height:600px !important;
+}
+#loader{
+    position:fixed;
+    top:50%;
+    left:50%;
+    display:none;
+}
+.cap{
+    text-transform: capitalize;
+}
+none{
+    display:none !important;
+}
+#icon-close{
+    position: relative;
+    top: -11px;
+    left: 70px;
+}
+/*dragula*/
+table.xtab  > tbody > tr:first-child > td {
+    background-color: #000 !important;
+    color:white !important;
+}
+/*
+.tagline {
+position: relative;
+margin-top: 0;
+}
+.tagline-text {
+vertical-align: middle;
+}
+.__slackin {
+float: right;
+margin-left: 10px;
+vertical-align: middle;
+}
+
+.promo {
+margin-bottom: 0;
+font-style: italic;
+padding: 10px;
+background-color: #ff4020;
+border-bottom: 5px solid #c00;
+}
+
+.parent {
+background-color: rgba(255, 255, 255, 0.2);
+margin: 50px 0;
+padding: 20px;
+}
+
+
+
+.gh-fork {
+position: fixed;
+top: 0;
+right: 0;
+border: 0;
+}
+
+dragula-specific example page styles 
+
+.container {
+display: table-cell;
+}
+*/
+/*
+* note that styling gu-mirror directly is a bad practice because it's too generic.
+* you're better off giving the draggable elements a unique class and styling that directly!
+*/
+/*
+.container > div,
+.gu-mirror {
+margin: 10px;
+padding: 10px;
+background-color: rgba(0, 0, 0, 0.2);
+transition: opacity 0.4s ease-in-out;
+}
+.container > div {
+cursor: move;
+cursor: grab;
+cursor: -moz-grab;
+cursor: -webkit-grab;
+}
+.gu-mirror {
+cursor: grabbing;
+cursor: -moz-grabbing;
+cursor: -webkit-grabbing;
+}
+.container .ex-moved {
+background-color: #e74c3c;
+}
+.container.ex-over {
+background-color: rgba(255, 255, 255, 0.3);
+}
+#left-lovehandles > div,
+#right-lovehandles > div {
+cursor: initial;
+}
+.handle {
+padding: 0 5px;
+margin-right: 5px;
+background-color: rgba(0, 0, 0, 0.4);
+cursor: move;
+}
+.image-thing {
+margin: 20px 0;
+display: block;
+text-align: center;
+}
+.slack-join {
+position: absolute;
+font-weight: normal;
+font-size: 14px;
+right: 10px;
+top: 50%;
+margin-top: -8px;
+line-height: 16px;
+}
+*/
+
+.draggable {
+    border-radius:10px !important;
+}
+.draggable.is-pointer-down {
+    border-radius:0px !important;
+}
+.draggable.is-dragging { 
+    border-radius:1px !important;
+}
+
+/*table design*/
+/*
+table {
+	background: #f5f5f5;
+	border-collapse: separate;
+	box-shadow: inset 0 1px 0 #fff;
+	font-size: 12px;
+	line-height: 24px;
+	margin: 30px auto;
+	text-align: left;
+	width: 800px;
+}	
+
+th {
+	background:  linear-gradient(#777, #444);
+	border-left: 1px solid #555;
+	border-right: 1px solid #777;
+	border-top: 1px solid #555;
+	border-bottom: 1px solid #333;
+	box-shadow: inset 0 1px 0 #999;
+	color: #fff;
+  font-weight: bold;
+	padding: 10px 15px;
+	position: relative;
+	text-shadow: 0 1px 0 #000;	
+}
+
+
+th:first-child {
+	border-left: 1px solid #777;	
+
+}
+
+
+td {
+	border-right: 1px solid #fff;
+	border-left: 1px solid #e8e8e8;
+	border-top: 1px solid #fff;
+	border-bottom: 1px solid #e8e8e8;
+	padding: 10px 15px;
+	position: relative;
+	transition: all 300ms;
+}
+
+
+tr {
+	background: #f1f1f1;
+}
+
+tr:nth-child(odd) td {
+	background: #f1f1f1;	
+}
+*/
+[draggable] {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  /* Required to make elements draggable in old WebKit */
+  -khtml-user-drag: element;
+  -webkit-user-drag: element;
+}
+#nav{
+    background-color: #024b68;
+    position: fixed;
+    top: 0px;
+    z-index: 999999;
+    width: 100%;
+    padding-bottom: 0%;
+    border-bottom:#024b68 !important;
+    padding:5px !important;
+    
+    
+}
+#nav li a {
+    color:#fff !important;
+}
+#nav li a:hover{
+    background-color:#024b68 !important;
+    border-color:#024b68 !important;
+    
+}
+.active{
+    border-bottom:1px solid #fff !important;
+}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus{
+    border-color:#024b68 !important;
+    color:white !important; 
+    background-color: #024b68 !important;
+}
+.nav-tabs>li.active>a{
+    color:white !important;
+}
+.nav-tabs>li.active>a:hover{
+    background-color:#024b68 !important;
+}
+.xtab, .xtab tr, .xtab td, .xtab th, .xtab input, .xtab select, .xtab textarea { border: 0px; padding: 0px; margin: 0px; border-collapse: collapse; }
+table.xtab { border: solid 1px gray; }
+.xtab td, .xtab th { border: dotted 1px gray; }
+.xtab th { background-color: lightgray; font-weight: normal; text-align: center; padding: 0px 10px; }
+.xtab input, .xtab select, .xtab textarea { padding: 3px; width: 100px; }
+.xtab input.number { text-align: right; }
+.xtab input:focus, .xtab select:focus, .xtab textarea:focus { padding: 2px; border: solid 1px blue; }
+
+
+.xtab{
+    padding:3px !important;
+}
+.xtab input, .xtab select, .xtab textarea{
+    width:100% !important;
+    padding:5px !important;
+}
+table.xtab  > tbody > tr:first-child > td  > input{
+    background-color: #000 !important;
+    color:white !important;
+}

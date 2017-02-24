@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>xTab demo</title>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="xtab.js"></script>
+<link rel="stylesheet" href="xtab.css"/>
+<style type="text/css" media="screen">
+html, body { background-color : white; color : black; font-family :  Arial, Verdana, Helvetica; }
+p,a,ul,li,td,th { font-size : 12pt; }
+h1 { font-size : 16pt; }
+h2 { font-size : 14pt; }
+button { margin: 5px; }
+</style>
+<script type="text/javascript">
+$(document).ready(function() {
+	var t = $("#t1");
+	// Example
+	t.xtab("init", {
+		mainlabel: "test",
+		split: true,
+		rows: 5,
+		cols: 5,
+		rowlabels: true,
+		collabels: true,
+		widths: [ 75, 50, 100, 200 ],
+		values: [
+					["a1", "b1", "c1", "d1"],
+					[1, 2, 3, 4],
+					[1.1, 1.2, 1.3, 1.4],
+					[true, false, true, false]
+				],
+		change: function(r, c, val, ref) {
+			console.log("CHANGE [" + r + ", " + c + "] = \"" + ref + "\": " + val);
+		},
+		focus: function(r, c, val, ref) {
+			console.log("FOCUS [" + r + ", " + c + "] = \"" + ref + "\": " + val);
+		}
+	});
+	t.xtab("color", "A3", "lightblue");
+	$("#b2").click(function() { console.log(t.xtab("val")); });
+	$("#b3").click(function() { console.log(t.xtab("val", 0, 1)); });
+	$("#b4").click(function() { console.log(t.xtab("val", "B3")); });
+	$("#b5").click(function() { t.xtab("val", 1, 2, "value 1"); });
+	$("#b6").click(function() { t.xtab("val", "D2", { value: "value 2", readonly: true, color: "green" }); });
+	$("#b7").click(function() {
+		t.xtab("readonly", "D2", !t.xtab("readonly", "D2"));
+		t.xtab("val", "D2", parseInt(t.xtab("val", "D2")) + 1);
+	});
+	// Another example using functions
+	/*$("#t2").xtab("init", {
+		rows: 8, cols: 8,
+		width: 600;
+		widths: function(c) { return 100 + c*10; },
+		rowlabels: function(r) { return "row " + r; },
+		collabels: function(c) {
+			if (c%2 == 0) {
+				var th = $("<th/>", { colspan: 2 }).append("col " + c);
+				if (c%4 == 0) th.attr("style", "background: red; color: white;");
+				return th;
+			}
+		},
+		values: function(r, c) {
+			var v = "val " + r + ',' + c
+			return c%2 == 0 ? v : { value: v, readonly: r%2 != 0, color: (r%2 == 0 ? "green" : undefined) };
+		}
+	});*/
+});
+</script>
+</head>
+<body>
+<div id="t1"></div>
+<button id="b2">Get all values</button>&nbsp;
+<button id="b3">Get value at [0,1] = "B1"</button>&nbsp;
+<button id="b4">Get value at "B3"</button>&nbsp;
+<button id="b5">Set value at [1,2] = "C2"</button>&nbsp;
+<button id="b6">Set value and properties at "D2"</button>&nbsp;
+<button id="b7">Increase value at "D2" (and toggle it readonly)</button>&nbsp;
+<br/>See console for values...
+<div id="t2"></div>
+</body>
+</html>

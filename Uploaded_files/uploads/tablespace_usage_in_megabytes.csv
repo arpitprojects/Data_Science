@@ -1,0 +1,6 @@
+"Tablespace","Free Space (MB)","Used Space (MB)","Maximum (MB)"
+"SYSAUX","36","624","32,768"
+"SYSTEM","3","357","600"
+"UNDOTBS1","370","10","500"
+"USERS","92","8","11,264"
+"TEMP","16","4","32,768"

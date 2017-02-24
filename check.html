@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Data Science
+        </title>
+        <!--MeTa Tags-->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <!--Put more SEO Meta tags here only -->
+        <!--css-->
+        <link rel="stylesheet" href="resource/css/reset.css"/>
+        <link rel="stylesheet" href="vendor/css/bootstrap.min.css"/>
+        <!--
+<link rel="stylesheet" href="vendor/css/kendo.common-bootstrap.min.css"/>
+<link rel="stylesheet" href="vendor/css/kendo.bootstrap.min.css"/>
+-->
+        <link rel="stylesheet" href="vendor/css/perfect-scrollbar.min.css"/>
+        <link rel="stylesheet" href="vendor/css/highcharts.css"/>
+        <link rel="stylesheet" href="vendor/css/dragula.min.css"/>
+
+        <link rel="stylesheet" href="resource/css/main.css"/>
+        <!--All the icons -->
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+        <!--js-->
+        <script src="vendor/js/jquery.js"></script>
+        <script src="vendor/js/jszip.min.js"></script>
+        <script src="vendor/js/bootstrap.js"></script>
+        <script src="vendor/js/kendo.all.min.js"></script>
+        <script src="vendor/js/kendo.timezones.min.js"></script>
+        <script src="vendor/js/theme-chooser.js"></script>
+        <script src="vendor/js/perfect-scrollbar.jquery.min.js"></script>
+        <script src="vendor/js/perfect-scrollbar.min.js"></script> 
+        <script src="vendor/js/json-to-table.js"></script>
+        <script src="vendor/js/highcharts.js"></script>
+        <script src="vendor/js/exporting.js"></script>
+        <script src="vendor/js/drag.js"></script>
+        <script src="resource/js/script.js"></script>
+
+        <!--fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    </head>
+    <!--Checking script to be removed later-->
+    <script>
+        $(document).ready( function() {
+            var $draggable = $('.draggable').draggabilly();
+        });
+    </script>
+    <body class="main_page">
+        <div>
+
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+                <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+                <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+                <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="home">Arpit</div>
+                <div role="tabpanel" class="tab-pane" id="profile">Ananad</div>
+                <div role="tabpanel" class="tab-pane" id="messages">...</div>
+                <div role="tabpanel" class="tab-pane" id="settings">...</div>
+            </div>
+
+        </div>
+
+        <script>
+            $('#proceed').click(function(){
+                console.log('Proceeded');
+                $('#myModal1').modal('hide');
+            });
+        </script>
+        <script>
+            $(".menu-toggle").click(function(e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+            });    
+        </script>
+        <script>
+            /*Upload image ajax script*/
+            function image_upload(){
+                console.log('Fuction Executed');
+                var filedata = $('#imageUpld').prop('files')[0];
+                var formdata = new FormData();
+                formdata.append('file' , filedata);
+                console.log(formdata);
+                $.ajax({
+                    type:'POST',
+                    url: 'http://localhost/ProjectDataScience/Uploaded_files/index.php',
+                    data:formdata,
+                    cache:false,
+                    contentType: false,
+                    processData: false,
+                    success:function(data){
+                        console.log("success");
+                        console.log(data);
+                    },
+                    error: function(data){
+                        console.log("error");
+                        console.log(data);
+                    }
+                });
+            }
+            $("#imageUpld").on("change", function() {
+                image_upload();
+            });
+        </script>
+        <script>
+            function csvJSON(csv){
+
+                var lines=csv.split("\n");
+
+                var result = [];
+
+                var headers=lines[0].split(",");
+
+                for(var i=1;i<lines.length;i++){
+
+                    var obj = {};
+                    var currentline=lines[i].split(",");
+
+                    for(var j=0;j<headers.length;j++){
+                        obj[headers[j]] = currentline[j];
+                    }
+
+                    result.push(obj);
+
+                }
+
+                //return result; //JavaScript object
+                return JSON.stringify(result); //JSON
+            }
+
+            $('#imageUpld1').on("change" , function(){
+                image_up(); 
+            });
+            function image_up(){
+                $('#loader').css('display' , 'block');
+                console.log('Step 1 crossed');
+                var fileInput = document.getElementById('imageUpld1');
+
+                var fileName = fileInput.value;
+                console.log('Step 2 '+ fileName);
+                var ext = fileName.substring(fileName.lastIndexOf('.') + 1);
+
+                if(ext == 'csv'){
+                    console.log('File type Ok ' + ext)
+                }else{
+                    alert('File Type Not supported ' + ext);
+                    return false;
+                }
+
+                var file = fileInput.files[0];
+
+                var reader = new FileReader();
+                reader.readAsText(file);
+                reader.onload = function(e) {
+                    console.log(reader.result);
+                    var json = csvJSON(reader.result);
+                    console.log(json);
+                    json = JSON.parse(json);
+                    //here we will load the spreadsheet
+                    console.log('The main code.');
+                    $('#loader').css('display' , 'none');
+                    $('#myModal1').modal('show');
+
+                    //Temporarily disabled the Kendo Ui 
+                    //var spreadsheet = $("#spreadsheet").data("kendoSpreadsheet");
+                    //var sheet = spreadsheet.sheetByIndex(0);
+                    //sheet.fromJSON(json);
+                    var x = ConvertJsonToTable(json, 'tableId', null, 'Download');
+                    $('#modal-body').html(x);
+                    //get the rows and columns of the table
+                    var t = $('#tableId thead tr th').length;
+                    console.log('Table num of rows '+t);
+                    var t = $('#tableId thead tr th').length;
+                    var row = []; var item = [];  var seris = []; 
+                    var len;
+                    var items = [];
+                    var c = [];
+                    var chunk;
+                    /*get the len of row as t*/
+                    $('#tableId thead tr th').each(function() {
+                        var customerId = $(this).text(); 
+                        row.push(customerId);
+                    });
+
+                    /*Append all the rows array to the attributes columns code starts*/
+
+                    for(o=0;o<t;o++){
+                        //               row[o] = row[o].addClass('cap');  
+                        $('#all-drag-attribute').append('<div id="drag1" class="drag-ele" ondrop="drop(event)" ondragover="allowDrop(event)" ondragstart="drag(event)" draggable="true">'+row[o]+'<i class="fa fa-times none" id="icon-close"></i></div><br/>')
+                    }
+                    /*End of the of Append all the rows array to the attributes columns code starts*/
+                    /*end of get the len of row as t*/
+                    /*get the len of tbody columns as len*/
+                    $("#tableId tbody tr td:nth-child(1)").each( function(){
+                        //add item to array
+                        item.push( $(this).text());
+                    });
+                    len  = item.length;
+
+                    /*end of get the len of tbody columns as len*/
+
+                    for(i = 1 ; i <=t ;i++){
+                        $("#tableId tbody tr td:nth-child(" + i + ")").each( function(){
+                            var temp = $(this).text();
+                            temp = parseInt(temp);
+                            items.push(temp); 
+                            //Put the function for the data cleaniaing.
+                        });
+                    }
+                    while (items.length > 0) {
+
+                        chunk = items.splice(0,len)
+
+                        c.push(chunk);
+                    }
+                    var j;
+                    var seris = [];
+                    var data = [];
+                    for(j = 1; j <= t;j++ ){
+                        seris.push({
+                            name : row[j],
+                            data : c[j]
+                        });
+                    }
+                    console.log(seris);
+                    Highcharts.chart('graph', {
+
+                        title: {
+                            text: fileName
+                        },
+                        yAxis: {
+                            title: {
+                                text: fileName
+                            }
+                        },
+
+                        //this is mandatory
+                        plotOptions: {
+                            series: {
+                                pointStart: 0
+                            }
+                        },
+
+                        series: seris
+                    });
+                }
+                reader.onerror = function(e){
+                    console.log('Error reading files!!');
+                }
+                console.log('Pushing Ajax Fuction Executed');
+                var filedata = $('#imageUpld1').prop('files')[0];
+                var formdata = new FormData();
+                formdata.append('file' , filedata);
+                console.log(formdata);
+                $.ajax({
+                    type:'POST',
+                    url: 'http://localhost/ProjectDataScience/Uploaded_files/csv/index.php',
+                    data:formdata,
+                    cache:false,
+                    contentType: false,
+                    processData: false,
+                    success:function(data){
+                        console.log("success");
+                        console.log(data);
+                    },
+                    error: function(data){
+                        console.log("error");
+                        console.log(data);
+                    }
+                });
+            }
+        </script>
+        <script>
+            function tsvJSON(tsv){
+
+                var lines=tsv.split("\n");
+                var result = [];
+
+                var headers=lines[0].split("\t");
+
+                for(var i=1;i<lines.length;i++){
+
+                    var obj = {};
+                    var currentline=lines[i].split("\t");
+
+                    for(var j=0;j<headers.length;j++){
+                        obj[headers[j]] = currentline[j];
+                    }
+                    result.push(obj);
+                }
+
+                //return result; //JavaScript object
+                return JSON.stringify(result); //JSON
+            }
+
+            $('#imageUpld2').on("change" , function(){
+                image_up1(); 
+            });
+            function image_up1(){
+                console.log('Step 1 crossed');
+                var fileInput = document.getElementById('imageUpld2');
+
+                var fileName = fileInput.value;
+                console.log('Step 2 '+ fileName);
+                var ext = fileName.substring(fileName.lastIndexOf('.') + 1);
+
+                if(ext == 'tsv'){
+                    console.log('File type Ok ' + ext)
+                }else{
+                    alert('File Type Not supported ' + ext);
+                    return false;
+                }
+
+                var file = fileInput.files[0];
+
+                var reader = new FileReader();
+                reader.readAsText(file);
+                reader.onload = function(e) {
+
+                    console.log(reader.result);
+                    var json = tsvJSON(reader.result);
+                    console.log(json);
+                }
+                reader.onerror = function(e){
+                    console.log('Error reading files!!');
+                }
+                console.log('Pushing Ajax Fuction Executed');
+                var filedata = $('#imageUpld1').prop('files')[0];
+                var formdata = new FormData();
+                formdata.append('file' , filedata);
+                console.log(formdata);
+                $.ajax({
+                    type:'POST',
+                    url: 'http://localhost/ProjectDataScience/Uploaded_files/tsv/index.php',
+                    data:formdata,
+                    cache:false,
+                    contentType: false,
+                    processData: false,
+                    success:function(data){
+                        console.log("success");
+                        console.log(data);
+                    },
+                    error: function(data){
+                        console.log("error");
+                        console.log(data);
+                    }
+                });
+            }
+        </script>
+        <script>
+            function allowDrop(ev) {
+                ev.preventDefault();
+            }
+
+            function drag(ev) {
+                ev.dataTransfer.setData("text", ev.target.id);
+            }
+
+            function drop(ev) {
+                ev.preventDefault();
+                var data = ev.dataTransfer.getData("text");
+                ev.target.appendChild(document.getElementById(data));
+            }
+        </script>
+    </body>
+</html>

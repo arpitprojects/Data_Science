@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Data Science
+        </title>
+        <!--MeTa Tags-->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <!--Put more SEO Meta tags here only -->
+        <!--css-->
+        <link rel="stylesheet" href="../resource/css/reset.css"/>
+        <link rel="stylesheet" href="../vendor/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="../vendor/css/kendo.common-bootstrap.min.css"/>
+        <link rel="stylesheet" href="../vendor/css/kendo.bootstrap.min.css"/>
+        <link rel="stylesheet" href="../vendor/css/highcharts.css"/>
+        <link rel="stylesheet" href="../vendor/css/perfect-scrollbar.min.css"/>
+        <link rel="stylesheet" href="../resource/css/main.css"/>
+
+
+        <!--js-->
+        <script src="../vendor/js/jquery.js"></script>
+        <script src="../vendor/js/jszip.min.js"></script>
+        <script src="../vendor/js/bootstrap.js"></script>
+        <script src="../vendor/js/kendo.all.min.js"></script>
+        <script src="../vendor/js/kendo.timezones.min.js"></script>
+        <script src="../vendor/js/theme-chooser.js"></script>
+        <script src="../vendor/js/perfect-scrollbar.jquery.min.js"></script>
+        <script src="../vendor/js/perfect-scrollbar.min.js"></script> 
+        <script src="../vendor/js/json-to-table.js"></script>
+        <script src="../vendor/js/dynamitable.jquery.min.js"></script>
+
+        <script src="../vendor/js/highcharts.js"></script>
+        <script src="../vendor/js/exporting.js"></script>
+        <script src="../resource/js/script.js"></script>
+
+        <!--fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    </head>
+    <body class="main_page">
+        <!--All code here-->
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <i class="glyphicon glyphicon-menu-hamburger" id="toogle"></i>
+                    <a class="navbar-brand" href="#">Data Science</a>
+
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#">Login/SignUp</a></li>
+                        <li><a href="#!">Upload</a></li>
+                        <li><a href="#">Dashboard</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <div id="wrapper">
+            <div id="sidebar-wrapper">
+                <ul class="sidebar-nav">
+                    <li class="sidebar-brand">
+                        <br />
+                        <label style="color:white;">Select between your files:</label>
+                        <select class="form-control" id="select">
+                            <option selected="selected" value="0">new.csv</option>
+                            <option value="1">form.xslx</option>
+                            <option value="2">abc.txt<option>
+                        </select>
+                    </li>
+                    <li>                   
+
+                    </li>
+                    <br />
+                    <li>
+
+                    </li>
+                </ul>
+            </div>
+            <!-- /#sidebar-wrapper -->
+            <!-- Page Content -->
+            <div id="page-content-wrapper">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <!-- Main page-->
+                            <div class="main_container">
+                                <div class="row">
+                                    <div class="col-sm-12">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!--<div id="spreadsheet" style="width: 100%;"></div>-->
+                            <div class="right-wrapper">
+                                <div class="inside-wrapper">
+                                    <ul class="sidebar-nav">
+
+
+                                        <br /><br />
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            $('#select').change(function () {
+                var selectedText = $(this).find("option:selected").text();
+                var fileInput = selectedText;
+                fileName = fileInput;
+                console.log('Step 2 '+ fileName);
+                var ext = fileName.substring(fileName.lastIndexOf('.') + 1);
+                var file = fileInput.files[0];
+                var reader = new FileReader();
+                reader.readAsText(file);
+                reader.onload = function(e) {
+
+                    console.log(reader.result);
+                }
+
+
+            });
+            ext =0;
+            switch (ext) {
+                case 0:
+                    day = "Sunday";
+                    break;
+                case 1:
+                    day = "Monday";
+                    break;
+                case 2:
+                    day = "Tuesday";
+                    break;
+                case 3:
+                    day = "Wednesday";
+                    break;
+                case 4:
+                    day = "Thursday";
+                    break;
+                case 5:
+                    day = "Friday";
+                    break;
+                case 6:
+                    day = "Saturday";
+            }
+
+        </script>
+    </body>
+</html>
